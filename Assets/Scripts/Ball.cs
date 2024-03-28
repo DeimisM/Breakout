@@ -12,9 +12,19 @@ public class Ball : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         rb.velocity = rb.velocity.normalized * speed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        var brick = collision.gameObject.GetComponent<Brick>();
+
+        if (brick != null)
+        {
+            brick.Damage();
+        }
     }
 }

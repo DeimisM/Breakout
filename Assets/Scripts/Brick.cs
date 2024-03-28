@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
-    public int hp = 1;
+    [SerializeField]public int hp = 1;
 
     public void Damage()
     {
@@ -13,16 +13,6 @@ public class Brick : MonoBehaviour
         if (hp <= 0)
         {
             Destroy(gameObject);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        var brick = collision.gameObject.GetComponent<Brick>();
-
-        if (brick != null)
-        {
-            brick.Damage();
         }
     }
 }
